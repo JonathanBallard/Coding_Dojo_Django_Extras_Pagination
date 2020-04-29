@@ -13,7 +13,7 @@ def root(request):
 
 
 def index(request, page): 
-    entriesOnPage = 3
+    entriesOnPage = 5
     form = LeadForm
     renderTable = []
     allLeads = Lead.objects.all()
@@ -73,7 +73,7 @@ def index(request, page):
 
 
 def newLead(request):
-    entriesOnPage = 3
+    entriesOnPage = 5
     # create new lead here
     if request.method == "POST":
         newLead = Lead.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'])
@@ -107,7 +107,7 @@ def newLead(request):
 
 
 def pagination(request, page):
-    entriesOnPage = 3
+    entriesOnPage = 5
     renderTable = []
     allLeads = Lead.objects.all()
     pageAmt = page * entriesOnPage

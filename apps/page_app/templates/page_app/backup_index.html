@@ -63,12 +63,22 @@
             <h6 class="tPagesHeader mr-3">Table Pages</h6>
                 <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="1" > <i class="fas fa-angle-double-left"></i>
  </a> 
-
+                    <p>|</p>
+                    <a href='#' class="pag1 mx-2 pagLink" id="1">1</a> 
+                    <p>|</p>
+                    <a href='#' class="pag2 mx-2 pagLink" id="2">2</a> 
+                    <p>|</p>
+                    <a href='#' class="pag3 mx-2 pagLink" id="3">3</a> 
+                    <p>|</p>
+                    <a href='#' class="pag4 mx-2 pagLink" id="4">4</a> 
+                    <p>|</p>
+                    <a href='#' class="pag5 mx-2 pagLink" id="5">5</a> 
+                    <p>|</p>
 
 
                     <p>|</p>
                     <div class="pag1Div">
-                        <a href='#' class="isDisabled disabled pag1 mx-2 pagLink" id="1">1</a>
+                        <a href='#' class="pag1 mx-2 pagLink" id="1">1</a>
                     </div>
                     <p>|</p>
                     <div class="pag2Div">
@@ -99,7 +109,7 @@
 
 
 
-    <table id="table" class="table table-dark table-striped mb-5">
+    <table id="table" class="table table-dark table-striped">
         <thead>
         <tr>
         <th scope="col" class="text-warning">Leads ID</th>
@@ -223,109 +233,96 @@
                             
 
                             if(curPage == 2){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="isDisabled pag2 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus3 + '">' + curPlus3 +'</a>')
+                                $('.pag1').attr('id',curMinus1)
+                                $('.pag1').html(curMinus1)
+                                $('.pag2').attr('id',curPage)
+                                $('.pag2').html(curPage)
+                                $('.pag3').attr('id',curPlus1)
+                                $('.pag3').html(curPlus1)
+                                $('.pag4').attr('id',curPlus2)
+                                $('.pag4').html(curPlus2)
+                                $('.pag5').attr('id',curPlus3)
+                                $('.pag5').html(curPlus3)
                             }
                             else{
-                                $('.pag1Div').html('<a href="#" class="isDisabled pag1 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus3 + '">' + curPlus3 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus4 + '">' + curPlus4 +'</a>')
+                                $('.pag1').attr('id',curPage)
+                                $('.pag1').html(curPage)
+                                $('.pag2').attr('id',curPlus1)
+                                $('.pag2').html(curPlus1)
+                                $('.pag3').attr('id',curPlus2)
+                                $('.pag3').html(curPlus2)
+                                $('.pag4').attr('id',curPlus3)
+                                $('.pag4').html(curPlus3)
+                                $('.pag5').attr('id',curPlus4)
+                                $('.pag5').html(curPlus4)
                             }
                         }
                         
                         if(curPage >= numPages - 2){
                             if(curPage == numPages){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus4 + '">' + curMinus4 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus3 + '">' + curMinus3 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="isDisabled pag5 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
+                                $('.pag1').attr('id',curMinus4)
+                                $('.pag1').html(curMinus4)
+                                $('.pag2').attr('id',curMinus3)
+                                $('.pag2').html(curMinus3)
+                                $('.pag3').attr('id',curMinus2)
+                                $('.pag3').html(curMinus2)
+                                $('.pag4').attr('id',curMinus1)
+                                $('.pag4').html(curMinus1)
+                                $('.pag5').attr('id',curPage)
+                                $('.pag5').html(curPage)
                                 console.log('pag3 pageBTN', curMinus2)
                             }
                             else {
                                 if(curPage == numPages - 1){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus3 + '">' + curMinus3 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="isDisabled pag4 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
+                                    $('.pag1').attr('id',curMinus3)
+                                    $('.pag1').html(curMinus3)
+                                    $('.pag2').attr('id',curMinus2)
+                                    $('.pag2').html(curMinus2)
+                                    $('.pag3').attr('id',curMinus1)
+                                    $('.pag3').html(curMinus1)
+                                    $('.pag4').attr('id',curPage)
+                                    $('.pag4').html(curPage)
+                                    $('.pag5').attr('id',curPlus1)
+                                    $('.pag5').html(curPlus1)
                                 }
 
                                 else if(curPage == numPages - 2){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="isDisabled pag3 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
+                                    $('.pag1').attr('id',curMinus2)
+                                    $('.pag1').html(curMinus2)
+                                    $('.pag2').attr('id',curMinus1)
+                                    $('.pag2').html(curMinus1)
+                                    $('.pag3').attr('id',curPage)
+                                    $('.pag3').html(curPage)
+                                    $('.pag4').attr('id',curPlus1)
+                                    $('.pag4').html(curPlus1)
+                                    $('.pag5').attr('id',curPlus2)
+                                    $('.pag5').html(curPlus2)
                                 }
                             }
                         }
 
                         if(curPage >= 3 && curPage < numPages - 2){
-                            $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                            $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                            $('.pag3Div').html('<a href="#" class="disabled isDisabled pag3 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                            $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                            $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
+                            $('.pag1').attr('id',curMinus2)
+                            $('.pag1').html(curMinus2)
+                            $('.pag2').attr('id',curMinus1)
+                            $('.pag2').html(curMinus1)
+                            $('.pag3').attr('id',curPage)
+                            $('.pag3').html(curPage)
+                            $('.pag4').attr('id',curPlus1)
+                            $('.pag4').html(curPlus1)
+                            $('.pag5').attr('id',curPlus2)
+                            $('.pag5').html(curPlus2)
+                            console.log('curPage pageBTN', curPage)
                         }
                     }
                     //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
                     else {
                         console.log('999999999999999999999999999999999999999999999999999999999')
-                        for(var i = 1; i <= numPages; i++){
-                            if(i == curPage){
-                                $('.pag' + i + 'div').html('<a href="#" class="disabled isDisabled pag' + i + ' mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-                            }
-                            else{
-                                $('.pag' + i + 'div').html('<a href="#" class="pag' + i + ' mx-2 pagLink" id="' + i + '">' + i +'</a>')
-                            }
-                            
+                        for(var i = 0; i <= numPages; i++){
+                            let num = i + 1
+                            $('.pag' + (numPages - i)).attr('id',num)
+                            $('.pag' + (numPages - i)).html(num)
                         }
-                        $('.pag5Div').html('<a href="#" class="disabled isDisabled pag5 mx-2 pagLink" id="' + 5 + '">' + 5 +'</a>')
-
-                        if(numPages < 4){
-                            $('.pag4Div').html('<a href="#" class="disabled isDisabled pag4 mx-2 pagLink" id="' + 4 + '">' + 4 +'</a>')
-                        }
-                        if(numPages < 3){
-                            $('.pag3Div').html('<a href="#" class="disabled isDisabled pag3 mx-2 pagLink" id="' + 3 + '">' + 3 +'</a>')
-                        }
-                        if(numPages < 2){
-                            $('.pag2Div').html('<a href="#" class="disabled isDisabled pag2 mx-2 pagLink" id="' + 2 + '">' + 2 +'</a>')
-                        }
-                        if(numPages < 1){
-                            $('.pag1Div').html('<a href="#" class="disabled isDisabled pag1 mx-2 pagLink" id="' + 1 + '">' + 1 +'</a>')
-                        }
-                        
-
                     }
 
 
@@ -414,110 +411,98 @@
                             console.log('curPage pageBTN 11', curPage)
                             
 
+
                             if(curPage == 2){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="isDisabled pag2 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus3 + '">' + curPlus3 +'</a>')
+                                $('.pag1').attr('id',curMinus1)
+                                $('.pag1').html(curMinus1)
+                                $('.pag2').attr('id',curPage)
+                                $('.pag2').html(curPage)
+                                $('.pag3').attr('id',curPlus1)
+                                $('.pag3').html(curPlus1)
+                                $('.pag4').attr('id',curPlus2)
+                                $('.pag4').html(curPlus2)
+                                $('.pag5').attr('id',curPlus3)
+                                $('.pag5').html(curPlus3)
                             }
                             else{
-                                $('.pag1Div').html('<a href="#" class="isDisabled pag1 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus3 + '">' + curPlus3 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus4 + '">' + curPlus4 +'</a>')
+                                $('.pag1').attr('id',curPage)
+                                $('.pag1').html(curPage)
+                                $('.pag2').attr('id',curPlus1)
+                                $('.pag2').html(curPlus1)
+                                $('.pag3').attr('id',curPlus2)
+                                $('.pag3').html(curPlus2)
+                                $('.pag4').attr('id',curPlus3)
+                                $('.pag4').html(curPlus3)
+                                $('.pag5').attr('id',curPlus4)
+                                $('.pag5').html(curPlus4)
                             }
                         }
                         
                         if(curPage >= numPages - 2){
                             if(curPage == numPages){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus4 + '">' + curMinus4 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus3 + '">' + curMinus3 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="isDisabled pag5 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
+                                $('.pag1').attr('id',curMinus4)
+                                $('.pag1').html(curMinus4)
+                                $('.pag2').attr('id',curMinus3)
+                                $('.pag2').html(curMinus3)
+                                $('.pag3').attr('id',curMinus2)
+                                $('.pag3').html(curMinus2)
+                                $('.pag4').attr('id',curMinus1)
+                                $('.pag4').html(curMinus1)
+                                $('.pag5').attr('id',curPage)
+                                $('.pag5').html(curPage)
                                 console.log('pag3 pageBTN', curMinus2)
                             }
                             else {
                                 if(curPage == numPages - 1){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus3 + '">' + curMinus3 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="pag3 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="isDisabled pag4 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
+                                    $('.pag1').attr('id',curMinus3)
+                                    $('.pag1').html(curMinus3)
+                                    $('.pag2').attr('id',curMinus2)
+                                    $('.pag2').html(curMinus2)
+                                    $('.pag3').attr('id',curMinus1)
+                                    $('.pag3').html(curMinus1)
+                                    $('.pag4').attr('id',curPage)
+                                    $('.pag4').html(curPage)
+                                    $('.pag5').attr('id',curPlus1)
+                                    $('.pag5').html(curPlus1)
                                 }
-
+                                
                                 else if(curPage == numPages - 2){
-                                $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                                $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                                $('.pag3Div').html('<a href="#" class="isDisabled pag3 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                                $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                                $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
+                                    $('.pag1').attr('id',curMinus2)
+                                    $('.pag1').html(curMinus2)
+                                    $('.pag2').attr('id',curMinus1)
+                                    $('.pag2').html(curMinus1)
+                                    $('.pag3').attr('id',curPage)
+                                    $('.pag3').html(curPage)
+                                    $('.pag4').attr('id',curPlus1)
+                                    $('.pag4').html(curPlus1)
+                                    $('.pag5').attr('id',curPlus2)
+                                    $('.pag5').html(curPlus2)
                                 }
                             }
                         }
 
                         if(curPage >= 3 && curPage < numPages - 2){
-                            $('.pag1Div').html('<a href="#" class="pag1 mx-2 pagLink" id="' + curMinus2 + '">' + curMinus2 +'</a>')
-
-                            $('.pag2Div').html('<a href="#" class="pag2 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
-
-                            $('.pag3Div').html('<a href="#" class="disabled isDisabled pag3 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-
-                            $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curPlus1 + '">' + curPlus1 +'</a>')
-
-                            $('.pag5Div').html('<a href="#" class="pag5 mx-2 pagLink" id="' + curPlus2 + '">' + curPlus2 +'</a>')
+                            $('.pag1').attr('id',curMinus2)
+                            $('.pag1').html(curMinus2)
+                            $('.pag2').attr('id',curMinus1)
+                            $('.pag2').html(curMinus1)
+                            $('.pag3').attr('id',curPage)
+                            $('.pag3').html(curPage)
+                            $('.pag4').attr('id',curPlus1)
+                            $('.pag4').html(curPlus1)
+                            $('.pag5').attr('id',curPlus2)
+                            $('.pag5').html(curPlus2)
+                            console.log('curPage pageBTN', curPage)
                         }
                     }
                     //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
                     else {
                         console.log('999999999999999999999999999999999999999999999999999999999')
-                        for(var i = 1; i <= numPages; i++){
-                            if(i == curPage){
-                                $('.pag' + i + 'div').html('<a href="#" class="disabled isDisabled pag' + i + ' mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-                            }
-                            else{
-                                $('.pag' + i + 'div').html('<a href="#" class="pag' + i + ' mx-2 pagLink" id="' + i + '">' + i +'</a>')
-                            }
-                            
+                        for(var i = 0; i <= numPages; i++){
+                            let num = i + 1
+                            $('.pag' + (numPages - i)).attr('id',num)
+                            $('.pag' + (numPages - i)).html(num)
                         }
-                        $('.pag5Div').html('<a href="#" class="disabled isDisabled pag5 mx-2 pagLink" id="' + 5 + '">' + 5 +'</a>')
-
-                        if(numPages < 4){
-                            $('.pag4Div').html('<a href="#" class="disabled isDisabled pag4 mx-2 pagLink" id="' + 4 + '">' + 4 +'</a>')
-                        }
-                        if(numPages < 3){
-                            $('.pag3Div').html('<a href="#" class="disabled isDisabled pag3 mx-2 pagLink" id="' + 3 + '">' + 3 +'</a>')
-                        }
-                        if(numPages < 2){
-                            $('.pag2Div').html('<a href="#" class="disabled isDisabled pag2 mx-2 pagLink" id="' + 2 + '">' + 2 +'</a>')
-                        }
-                        if(numPages < 1){
-                            $('.pag1Div').html('<a href="#" class="disabled isDisabled pag1 mx-2 pagLink" id="' + 1 + '">' + 1 +'</a>')
-                        }
-                        
-
                     }
 
 
