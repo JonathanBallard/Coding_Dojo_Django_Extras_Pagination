@@ -8,7 +8,7 @@ import math
  
 # Create your views here. 
 def index(request): 
-    entriesOnPage = 10
+    entriesOnPage = 3
     form = LeadForm
     renderTable = []
     allLeads = Lead.objects.all()
@@ -38,7 +38,7 @@ def index(request):
 
 
 def newLead(request):
-    entriesOnPage = 10
+    entriesOnPage = 3
     # create new lead here
     if request.method == "POST":
         newLead = Lead.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'])
@@ -72,7 +72,7 @@ def newLead(request):
 
 
 def pagination(request, page):
-    entriesOnPage = 10
+    entriesOnPage = 3
     renderTable = []
     allLeads = Lead.objects.all()
     pageAmt = page * entriesOnPage

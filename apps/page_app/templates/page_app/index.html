@@ -63,7 +63,7 @@
             <h6 class="tPagesHeader mr-3">Table Pages</h6>
             {% for i in numPages %}
                 {% if i == 1 %}
-                    <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="" > << </a> 
+                    <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="1" > << </a> 
                     <p>|</p>
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     <p>|</p>
@@ -71,8 +71,9 @@
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     
                     <p>|</p>
-                    <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="" > >> </a>
-                    <div class="" id="maxPages" value="{{ i }}">{{ maxPages }}</div>
+                    <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="2" > >> </a>
+                    <div class="d-none" id="maxPages" value="{{ i }}">{{ maxPages }}</div>
+                    <div class="d-none" id="currentPage" value="1">1</div>
                 {% else %}
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     <p>|</p>
@@ -170,7 +171,7 @@
                         $('.leftArrow').attr("id", newId)
 
                     }
-
+                    $('#currentPage').attr('value', id)
                 }
             },
             "json");
@@ -217,7 +218,7 @@
                         $('.leftArrow').attr("id", newId)
 
                     }
-
+                    $('#currentPage').attr('value', id)
                 }
             },
             "json");
