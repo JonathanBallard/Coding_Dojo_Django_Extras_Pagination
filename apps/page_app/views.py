@@ -7,7 +7,12 @@ import math
  
  
 # Create your views here. 
-def index(request): 
+
+def root(request):
+    return redirect('/1')
+
+
+def index(request, page): 
     entriesOnPage = 3
     form = LeadForm
     renderTable = []
@@ -27,11 +32,41 @@ def index(request):
     else:
         renderTable = allLeads
     
+
+    currentPage = page
+
+
+    maxPages = numPages
+
+
+    
+
+    if page <= 3:
+        minPage = 1
+    else:
+        minPage = page - 2
+
+    if page >= numPages -2:
+        maxPage = numPages
+    else:
+        maxPage = page + 2
+
+
+    firstPage = 1
+    lastPage = numPages
+    
     context = {
         'lead_form' : form,
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
+        'rangeOfPages' : range(minPage,maxPage),
+        'maxPages' : maxPages,
+        'currentPage' : currentPage,
+        'firstPage' : firstPage,
+        'lastPage' : lastPage,
+        'minPage' : minPage,
+        'maxPage' : maxPage,
 
     }
     return render(request, 'page_app/index.html', context) 
@@ -98,26 +133,37 @@ def pagination(request, page):
         ]
     currentPage = page
 
-    if currentPage > 1:
-        leftArrow = currentPage - 1
-    else:
-        leftArrow = 1
-
-    if currentPage < numPages:
-        rightArrow = currentPage + 1
-    else:
-        rightArrow = numPages
 
     maxPages = numPages
+
+
+    
+
+    if page <= 3:
+        minPage = 1
+    else:
+        minPage = page - 2
+
+    if page >= numPages -2:
+        maxPage = numPages
+    else:
+        maxPage = page + 2
+
+
+    firstPage = 1
+    lastPage = numPages
 
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
+        'rangeOfPages' : range(minPage,maxPage),
         'maxPages' : maxPages,
         'currentPage' : currentPage,
-        'leftArrow' : leftArrow,
-        'rightArrow' : rightArrow,
+        'firstPage' : firstPage,
+        'lastPage' : lastPage,
+        'minPage' : minPage,
+        'maxPage' : maxPage,
     }
 
     return render(request, 'page_app/partials/table.html', context)

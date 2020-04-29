@@ -61,15 +61,14 @@
         <h1 class="display-4">Leads</h1>
         <p class="ml-auto text-lead text-primary text-lg">
             <h6 class="tPagesHeader mr-3">Table Pages</h6>
-            {% for i in numPages %}
-                {% if i == 1 %}
-                    <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="1" > << </a> 
+                <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="1" > << </a> 
+            {% for i in rangeOfPages %}
+                {% if i == minPage %}
                     <p>|</p>
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     <p>|</p>
-                {% elif i == numPages|length %}
+                {% elif i == rangeOfPages|length %}
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
-                    
                     <p>|</p>
                     <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="2" > >> </a>
                     <div class="d-none" id="maxPages" value="{{ i }}">{{ maxPages }}</div>
@@ -83,7 +82,7 @@
 
     </div>
 
-
+    {{ minPage }} ||||| {{ maxPage }}
 
 
     <table id="table" class="table table-dark table-striped">
@@ -193,7 +192,7 @@
             $.ajax({
                 url:"/lead/" + id,
                 method:"GET",
-                
+
                 success:function(response){
                     // add new instance to table
                     $('#table').html(response)
@@ -205,7 +204,7 @@
 
                     }
                     else{
-                        var newId = parseInt(id) +1;
+                        var newId = parseInt(id) + 1;
                         $('.rightArrow').attr("id", newId)
                     }
 
@@ -214,7 +213,7 @@
 
                     }
                     else{
-                        var newId = parseInt(id)-1;
+                        var newId = parseInt(id) - 1;
                         $('.leftArrow').attr("id", newId)
 
                     }
