@@ -1,6 +1,11 @@
 
 # AJAX & jQuery Pagination
 
+![Example](pagination.png)
+
+
+
+
 ## TODO
 
 - When users create enough leads in one go to require a new pagination page, automatically create it without having to refresh
