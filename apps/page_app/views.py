@@ -61,10 +61,12 @@ def newLead(request):
         renderTable = allLeads
 
 
+
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
+        
     }
     return render(request, 'page_app/partials/table.html', context)
 
@@ -94,12 +96,25 @@ def pagination(request, page):
         renderTable = [
             Lead(first_name="Empty", last_name="User", email="fakeuser@fakeemail.com")
         ]
-    
+    currentPage = page
+
+    if currentPage > 1:
+        leftArrow = currentPage - 1
+    else:
+        leftArrow = 1
+
+    if currentPage < numPages:
+        rightArrow = currentPage + 1
+    else:
+        rightArrow = numPages
 
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
+        'currentPage' : currentPage,
+        'leftArrow' : leftArrow,
+        'rightArrow' : rightArrow,
     }
     return render(request, 'page_app/partials/table.html', context)
 

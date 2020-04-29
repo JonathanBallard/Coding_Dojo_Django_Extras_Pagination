@@ -62,11 +62,20 @@
         <p class="ml-auto text-lead text-primary text-lg">
             <h6 class="tPagesHeader mr-3">Table Pages</h6>
             {% for i in numPages %}
-                {% if i == numPages|length %}
-                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a>
+                {% if i == 1 %}
+                    <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="" > << </a> 
+                    <p>|</p>
+                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
+                    <p>|</p>
+                {% elif i == numPages|length %}
+                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     
+                    <p>|</p>
+                    <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="" > >> </a>
+                    <div class="d-none" id="maxPages" value="{{ i }}">{{ i }}</div>
                 {% else %}
-                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> |
+                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
+                    <p>|</p>
                 {% endif %}
             {% endfor %}
         </p>
@@ -138,12 +147,83 @@
                 success:function(response){
                     // add new instance to table
                     $('#table').html(response)
+                    var maxPages = $('#maxPages').val()
+                    console.log(maxPages)
+                    if(id >= maxPages){
+                        $('.rightArrow').attr("id", id)
+                    }
+                    else{
+                        var newId = id+1;
+                        $('.rightArrow').attr("id", newId)
+                    }
+
+                    if(id <= 1){
+                        $('.leftArrow').attr("id", 1)
+
+                    }
+                    else{
+                        var newId = id-1;
+                        $('.leftArrow').attr("id", newId)
+
+                    }
+
                 }
             },
             "json");
 
             $('#form').trigger('reset');
         })
+
+
+
+
+
+
+
+
+        //arrowlink
+        $(document).on('click', '.arrLink', function(){
+            var id = $(this).attr('id');
+            $.ajax({
+                url:"/lead/" + id,
+                method:"GET",
+                
+                success:function(response){
+                    // add new instance to table
+                    $('#table').html(response)
+                    var maxPages = $('#maxPages').val()
+                    if(id >= maxPages){
+                        $('.rightArrow').attr("id", id)
+                    }
+                    else{
+                        var newId = id+1;
+                        $('.rightArrow').attr("id", newId)
+                    }
+
+                    if(id <= 1){
+                        $('.leftArrow').attr("id", 1)
+
+                    }
+                    else{
+                        var newId = id-1;
+                        $('.leftArrow').attr("id", newId)
+
+                    }
+
+                }
+            },
+            "json");
+
+            $('#form').trigger('reset');
+        })
+
+
+
+
+
+
+
+
 
     })
 
