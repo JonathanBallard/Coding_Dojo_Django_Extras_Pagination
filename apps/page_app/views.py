@@ -66,7 +66,7 @@ def newLead(request):
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
-        
+
     }
     return render(request, 'page_app/partials/table.html', context)
 
@@ -108,14 +108,18 @@ def pagination(request, page):
     else:
         rightArrow = numPages
 
+    maxPages = numPages
+
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
+        'maxPages' : maxPages,
         'currentPage' : currentPage,
         'leftArrow' : leftArrow,
         'rightArrow' : rightArrow,
     }
+
     return render(request, 'page_app/partials/table.html', context)
 
 

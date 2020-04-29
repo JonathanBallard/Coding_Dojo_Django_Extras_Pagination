@@ -72,7 +72,7 @@
                     
                     <p>|</p>
                     <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="" > >> </a>
-                    <div class="d-none" id="maxPages" value="{{ i }}">{{ i }}</div>
+                    <div class="" id="maxPages" value="{{ i }}">{{ maxPages }}</div>
                 {% else %}
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
                     <p>|</p>
@@ -140,6 +140,7 @@
 
         $(document).on('click', '.pagLink', function(){
             var id = $(this).attr('id');
+            var maxPages = $('#maxPages').attr('value');
             $.ajax({
                 url:"/lead/" + id,
                 method:"GET",
@@ -147,14 +148,17 @@
                 success:function(response){
                     // add new instance to table
                     $('#table').html(response)
-                    var maxPages = $('#maxPages').val()
+                    
+                    if(id >= maxPages){
+                        id = maxPages;
+                    }
                     console.log(maxPages)
                     if(id >= maxPages){
-                        $('.rightArrow').attr("id", id)
+                        $('.rightArrow').attr("id", maxPages)
                     }
                     else{
-                        var newId = id+1;
-                        $('.rightArrow').attr("id", newId)
+
+                        $('.rightArrow').attr("id", parseInt(id)+1)
                     }
 
                     if(id <= 1){
@@ -162,7 +166,7 @@
 
                     }
                     else{
-                        var newId = id-1;
+                        var newId = parseInt(id)-1;
                         $('.leftArrow').attr("id", newId)
 
                     }
@@ -184,6 +188,7 @@
         //arrowlink
         $(document).on('click', '.arrLink', function(){
             var id = $(this).attr('id');
+            var maxPages = $('#maxPages').attr('value');
             $.ajax({
                 url:"/lead/" + id,
                 method:"GET",
@@ -191,12 +196,18 @@
                 success:function(response){
                     // add new instance to table
                     $('#table').html(response)
-                    var maxPages = $('#maxPages').val()
                     if(id >= maxPages){
-                        $('.rightArrow').attr("id", id)
+                        id = maxPages;
+                    }
+                    console.log('ID:', id)
+                    console.log('maxPages:', maxPages)
+                    if(id >= maxPages){
+                        //$('.rightArrow').attr("id", id)
+                        var newId = parseInt(id)+1;
+                        $('.rightArrow').attr("id", newId)
                     }
                     else{
-                        var newId = id+1;
+                        var newId = parseInt(id) +1;
                         $('.rightArrow').attr("id", newId)
                     }
 
@@ -205,7 +216,7 @@
 
                     }
                     else{
-                        var newId = id-1;
+                        var newId = parseInt(id)-1;
                         $('.leftArrow').attr("id", newId)
 
                     }
