@@ -20,6 +20,10 @@ def index(request):
     if len(allLeads) > entriesOnPage:
         for i in range(entriesOnPage):
             renderTable.append(allLeads[i])
+    elif len(allLeads) < 1 or not len(allLeads):
+        renderTable = [
+            Lead(first_name="Empty", last_name="User", email="fakeuser@fakeemail.com")
+        ]
     else:
         renderTable = allLeads
     
@@ -49,6 +53,10 @@ def newLead(request):
     if len(allLeads) > entriesOnPage:
         for i in range(entriesOnPage):
             renderTable.append(allLeads[i])
+    elif len(allLeads) < 1 or not len(allLeads):
+        renderTable = [
+            Lead(first_name="Empty", last_name="User", email="fakeuser@fakeemail.com")
+        ]
     else:
         renderTable = allLeads
 
@@ -82,6 +90,10 @@ def pagination(request, page):
             renderTable.append(allLeads[(pageAmt - entriesOnPage) + i ])
     elif len(allLeads) <= entriesOnPage:
         renderTable = allLeads
+    elif len(allLeads) < 1 or not len(allLeads):
+        renderTable = [
+            Lead(first_name="Empty", last_name="User", email="fakeuser@fakeemail.com")
+        ]
     
 
     context = {
