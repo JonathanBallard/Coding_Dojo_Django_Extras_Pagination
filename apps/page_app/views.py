@@ -3,27 +3,38 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages 
 from .models import * 
 from .forms import LeadForm
+import math
  
  
 # Create your views here. 
 def index(request): 
+    entriesOnPage = 5
     form = LeadForm
     renderTable = []
     allLeads = Lead.objects.all()
 
-    for i in range(5):
-        renderTable.append(allLeads[i])
+    numPages = math.ceil(len(allLeads) / entriesOnPage)
+    if len(allLeads) % entriesOnPage > 0:
+        numPages += 1
 
+    if len(allLeads) > entriesOnPage:
+        for i in range(entriesOnPage):
+            renderTable.append(allLeads[i])
+    else:
+        renderTable = allLeads
+    
     context = {
         'lead_form' : form,
         'all_leads' : allLeads,
         'renderTable' : renderTable,
+        'numPages' : range(1,numPages),
 
     }
     return render(request, 'page_app/index.html', context) 
 
 
 def newLead(request):
+    entriesOnPage = 5
     # create new lead here
     if request.method == "POST":
         newLead = Lead.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'])
@@ -31,29 +42,52 @@ def newLead(request):
     renderTable = []
     allLeads = Lead.objects.all()
 
-    for i in range(5):
-        renderTable.append(allLeads[i])
+    numPages = math.ceil(len(allLeads) / entriesOnPage)
+    if len(allLeads) % entriesOnPage > 0:
+        numPages += 1
+
+    if len(allLeads) > entriesOnPage:
+        for i in range(entriesOnPage):
+            renderTable.append(allLeads[i])
+    else:
+        renderTable = allLeads
 
 
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
+        'numPages' : range(1,numPages),
     }
     return render(request, 'page_app/partials/table.html', context)
 
 
 def pagination(request, page):
+    entriesOnPage = 5
     renderTable = []
-    pageIt = page * 5
     allLeads = Lead.objects.all()
+    pageAmt = page * entriesOnPage
+    pageIt = len(allLeads)
 
-    for i in range(5):
-        renderTable.append(allLeads[(pageIt - 5) + i ])
+
+    numPages = math.ceil(len(allLeads) / entriesOnPage)
+    if len(allLeads) % entriesOnPage > 0:
+        numPages += 1
+
+
+    if len(allLeads) < pageAmt and len(allLeads) > entriesOnPage:
+        for i in range(entriesOnPage): 
+            renderTable.append(allLeads[(pageIt - entriesOnPage) + i ])
+    elif len(allLeads) >= pageAmt:
+        for i in range(entriesOnPage): 
+            renderTable.append(allLeads[(pageAmt - entriesOnPage) + i ])
+    elif len(allLeads) <= entriesOnPage:
+        renderTable = allLeads
     
 
     context = {
         'all_leads' : allLeads,
         'renderTable' : renderTable,
+        'numPages' : range(1,numPages),
     }
     return render(request, 'page_app/partials/table.html', context)
 

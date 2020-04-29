@@ -41,7 +41,20 @@
     </form>
 
 
+    <div class="pagination">
+        <h6>Table Pages:</h6>
+        <p class="ml-auto text-lead text-primary text-lg">
+            {% for i in numPages %}
+                {% if i == numPages|length %}
+                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a>
+                    
+                {% else %}
+                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> |
+                {% endif %}
+            {% endfor %}
+        </p>
 
+    </div>
 
 
 
@@ -49,7 +62,7 @@
     <table id="table" class="table table-dark table-striped">
         <thead>
         <tr>
-            <th scope="col">leads id</th>
+            <th scope="col">lead id</th>
             <th scope="col">first name</th>
             <th scope="col">last name</th>
             <th scope="col">registered datetime</th>
@@ -83,26 +96,41 @@
 <script>
     // formSubmit
     $(document).ready(function(){
+        $(document).on('click', '#formSubmit', function(){
+            $.ajax({
+                url:"/lead/new/",
+                method:"POST",
+                data: $('#form').serialize(),
+                success:function(response){
+                    // add new instance to table
+                    console.log('Successful Form Submittal, Response:', response)
+                    $('#table').html(response)
+                }
+            },
+            "json");
 
+            $('#form').trigger('reset');
+        })
 
+        $(document).on('click', '.pagLink', function(){
+            var id = $(this).attr('id');
+            $.ajax({
+                url:"/lead/" + id,
+                method:"GET",
+                
+                success:function(response){
+                    // add new instance to table
+                    $('#table').html(response)
+                }
+            },
+            "json");
+
+            $('#form').trigger('reset');
+        })
 
     })
 
-    $(document).on('click', '#formSubmit', function(){
-        $.ajax({
-            url:"/lead/new/",
-            method:"POST",
-            data: $('#form').serialize(),
-            success:function(response){
-                // add new instance to table
-                console.log('Successful Form Submittal, Response:', response)
-                $('#table').html(response)
-            }
-        },
-        "json");
 
-        $('#form').trigger('reset');
-    })
 
 </script>
 
