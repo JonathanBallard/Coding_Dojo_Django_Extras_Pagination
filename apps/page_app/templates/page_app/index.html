@@ -174,7 +174,6 @@
                     if(id >= maxPages){
                         id = maxPages;
                     }
-                    console.log(maxPages)
                     if(id >= maxPages){
                         $('.rightArrow').attr("id", maxPages)
                     }
@@ -205,21 +204,10 @@
                     var curMinus3 = parseInt(curPage) - 3
                     var curMinus2 = parseInt(curPage) - 2
                     var curMinus1 = parseInt(curPage) - 1
-                    console.log('curMinus4:', curMinus4)
-                    console.log('curMinus3:', curMinus3)
-                    console.log('curMinus2:', curMinus2)
-                    console.log('curMinus1:', curMinus1)
-                    console.log('curPage:', curPage)
-                    console.log('CurPlus1:', curPlus1)
-                    console.log('curPlus2:', curPlus2)
-                    console.log('curPlus3:', curPlus3)
-                    console.log('curPlus4:', curPlus4)
-
 
 
                     if(numPages >= 5){
                         if(curPage < 3){
-                            console.log('curPage pageBTN 11', curPage)
                             
 
                             if(curPage == 2){
@@ -257,7 +245,6 @@
                                 $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
 
                                 $('.pag5Div').html('<a href="#" class="isDisabled pag5 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-                                console.log('pag3 pageBTN', curMinus2)
                             }
                             else {
                                 if(curPage == numPages - 1){
@@ -300,7 +287,6 @@
                     }
                     //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
                     else {
-                        console.log('999999999999999999999999999999999999999999999999999999999')
                         for(var i = 1; i <= numPages; i++){
                             if(i == curPage){
                                 $('.pag' + i + 'div').html('<a href="#" class="disabled isDisabled pag' + i + ' mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
@@ -399,19 +385,9 @@
                     var curMinus3 = parseInt(curPage) - 3
                     var curMinus2 = parseInt(curPage) - 2
                     var curMinus1 = parseInt(curPage) - 1
-                    console.log('curMinus4:', curMinus4)
-                    console.log('curMinus3:', curMinus3)
-                    console.log('curMinus2:', curMinus2)
-                    console.log('curMinus1:', curMinus1)
-                    console.log('curPage:', curPage)
-                    console.log('CurPlus1:', curPlus1)
-                    console.log('curPlus2:', curPlus2)
-                    console.log('curPlus3:', curPlus3)
-                    console.log('curPlus4:', curPlus4)
 
                     if(numPages >= 5){
                         if(curPage < 3){
-                            console.log('curPage pageBTN 11', curPage)
                             
 
                             if(curPage == 2){
@@ -449,7 +425,6 @@
                                 $('.pag4Div').html('<a href="#" class="pag4 mx-2 pagLink" id="' + curMinus1 + '">' + curMinus1 +'</a>')
 
                                 $('.pag5Div').html('<a href="#" class="isDisabled pag5 mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
-                                console.log('pag3 pageBTN', curMinus2)
                             }
                             else {
                                 if(curPage == numPages - 1){
@@ -492,7 +467,6 @@
                     }
                     //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
                     else {
-                        console.log('999999999999999999999999999999999999999999999999999999999')
                         for(var i = 1; i <= numPages; i++){
                             if(i == curPage){
                                 $('.pag' + i + 'div').html('<a href="#" class="disabled isDisabled pag' + i + ' mx-2 pagLink" id="' + curPage + '">' + curPage +'</a>')
