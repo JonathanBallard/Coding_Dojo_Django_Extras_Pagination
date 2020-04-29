@@ -29,21 +29,38 @@
 
 
 <div class="container">
-    <h1 class="display-1">Pagination</h1>
+    <h1 class="display-4">Pagination</h1>
 
+
+    <h5 class="formHeader">Enter Lead!</h5>
     <form id="form" action="/lead/new/" method="POST">
-        <div class="form form-inline">
+        <div class="form form-row">
         {% csrf_token %}
-        {{ lead_form.as_p }}
+
+        <div class="d-inline-block mx-2">
+            <h6>First Name:</h6>
+            <div class="bg-dark form-control form-lg">{{ lead_form.first_name }}</div>
+        </div>
+        <div class="d-inline-block mx-2">
+            <h6>Last Name:</h6>
+            <div class="bg-dark form-control form-lg">{{ lead_form.last_name }}</div>
+        </div>
+        <div class="d-inline-block mx-2">
+            <h6>Email:</h6>
+            <div class="bg-dark form-control form-lg">{{ lead_form.email }}</div>
+        </div>
+        
+        
     
         <div class="ml-4 btn btn-lg btn-info" id="formSubmit">Submit</div>
         </div>
     </form>
 
-
+    <br><br><hr>
     <div class="pagination">
-        <h6>Table Pages:</h6>
+        <h1 class="display-4">Leads</h1>
         <p class="ml-auto text-lead text-primary text-lg">
+            <h6 class="tPagesHeader mr-3">Table Pages</h6>
             {% for i in numPages %}
                 {% if i == numPages|length %}
                     <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a>
