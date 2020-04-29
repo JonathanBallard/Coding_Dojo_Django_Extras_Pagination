@@ -199,12 +199,9 @@
                     if(id >= maxPages){
                         id = maxPages;
                     }
-                    console.log('ID:', id)
-                    console.log('maxPages:', maxPages)
                     if(id >= maxPages){
-                        //$('.rightArrow').attr("id", id)
-                        var newId = parseInt(id)+1;
-                        $('.rightArrow').attr("id", newId)
+                        $('.rightArrow').attr("id", id)
+
                     }
                     else{
                         var newId = parseInt(id) +1;
