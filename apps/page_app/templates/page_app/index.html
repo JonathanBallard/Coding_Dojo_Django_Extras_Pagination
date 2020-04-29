@@ -62,22 +62,23 @@
         <p class="ml-auto text-lead text-primary text-lg">
             <h6 class="tPagesHeader mr-3">Table Pages</h6>
                 <a href="#" data-id="" class="mx-2 arrLink leftArrow" id="1" > << </a> 
-            {% for i in rangeOfPages %}
-                {% if i == minPage %}
                     <p>|</p>
-                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
+                    <a href='#' class="pag1 mx-2 pagLink" id="1">1</a> 
                     <p>|</p>
-                {% elif i == rangeOfPages|length %}
-                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
+                    <a href='#' class="pag2 mx-2 pagLink" id="2">2</a> 
                     <p>|</p>
-                    <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="2" > >> </a>
-                    <div class="d-none" id="maxPages" value="{{ i }}">{{ maxPages }}</div>
-                    <div class="d-none" id="currentPage" value="1">1</div>
-                {% else %}
-                    <a href='#' class="mx-2 pagLink" id="{{ i }}">{{ i }}</a> 
+                    <a href='#' class="pag3 mx-2 pagLink" id="3">3</a> 
                     <p>|</p>
-                {% endif %}
-            {% endfor %}
+                    <a href='#' class="pag4 mx-2 pagLink" id="4">4</a> 
+                    <p>|</p>
+                    <a href='#' class="pag5 mx-2 pagLink" id="5">5</a> 
+                    <p>|</p>
+
+
+            <div class="d-none" id="maxPages" value='{{ maxPages|add:"-1" }}'>{{ maxPages|add:"-1" }}</div>
+            <a href='#' data-id="" class="mx-2 arrLink rightArrow" id="2" > >> </a>
+            
+            <div class="d-none" id="currentPage" value="1">1</div>
         </p>
 
     </div>
@@ -146,6 +147,14 @@
                 method:"GET",
                 
                 success:function(response){
+
+
+
+                    
+
+
+
+
                     // add new instance to table
                     $('#table').html(response)
                     
@@ -171,6 +180,135 @@
 
                     }
                     $('#currentPage').attr('value', id)
+
+                    let curPage = $('#currentPage').attr('value');
+                    var numPages = $('#maxPages').attr('value');
+
+                    var curPlus1 = parseInt(curPage) + 1
+                    var curPlus2 = parseInt(curPage) + 2
+                    var curPlus3 = parseInt(curPage) + 3
+                    var curPlus4 = parseInt(curPage) + 4
+                    var curMinus4 = parseInt(curPage) - 4
+                    var curMinus3 = parseInt(curPage) - 3
+                    var curMinus2 = parseInt(curPage) - 2
+                    var curMinus1 = parseInt(curPage) - 1
+                    console.log('curMinus4:', curMinus4)
+                    console.log('curMinus3:', curMinus3)
+                    console.log('curMinus2:', curMinus2)
+                    console.log('curMinus1:', curMinus1)
+                    console.log('curPage:', curPage)
+                    console.log('CurPlus1:', curPlus1)
+                    console.log('curPlus2:', curPlus2)
+                    console.log('curPlus3:', curPlus3)
+                    console.log('curPlus4:', curPlus4)
+
+
+
+                    if(numPages >= 5){
+                        if(curPage < 3){
+                            console.log('curPage pageBTN 11', curPage)
+                            
+
+                            if(curPage == 2){
+                                $('.pag1').attr('id',curMinus1)
+                                $('.pag1').html(curMinus1)
+                                $('.pag2').attr('id',curPage)
+                                $('.pag2').html(curPage)
+                                $('.pag3').attr('id',curPlus1)
+                                $('.pag3').html(curPlus1)
+                                $('.pag4').attr('id',curPlus2)
+                                $('.pag4').html(curPlus2)
+                                $('.pag5').attr('id',curPlus3)
+                                $('.pag5').html(curPlus3)
+                            }
+                            else{
+                                $('.pag1').attr('id',curPage)
+                                $('.pag1').html(curPage)
+                                $('.pag2').attr('id',curPlus1)
+                                $('.pag2').html(curPlus1)
+                                $('.pag3').attr('id',curPlus2)
+                                $('.pag3').html(curPlus2)
+                                $('.pag4').attr('id',curPlus3)
+                                $('.pag4').html(curPlus3)
+                                $('.pag5').attr('id',curPlus4)
+                                $('.pag5').html(curPlus4)
+                            }
+                        }
+                        
+                        if(curPage >= numPages - 2){
+                            if(curPage == numPages){
+                                $('.pag1').attr('id',curMinus4)
+                                $('.pag1').html(curMinus4)
+                                $('.pag2').attr('id',curMinus3)
+                                $('.pag2').html(curMinus3)
+                                $('.pag3').attr('id',curMinus2)
+                                $('.pag3').html(curMinus2)
+                                $('.pag4').attr('id',curMinus1)
+                                $('.pag4').html(curMinus1)
+                                $('.pag5').attr('id',curPage)
+                                $('.pag5').html(curPage)
+                                console.log('pag3 pageBTN', curMinus2)
+                            }
+                            else {
+                                if(curPage == numPages - 1){
+                                    $('.pag1').attr('id',curMinus3)
+                                    $('.pag1').html(curMinus3)
+                                    $('.pag2').attr('id',curMinus2)
+                                    $('.pag2').html(curMinus2)
+                                    $('.pag3').attr('id',curMinus1)
+                                    $('.pag3').html(curMinus1)
+                                    $('.pag4').attr('id',curPage)
+                                    $('.pag4').html(curPage)
+                                    $('.pag5').attr('id',curPlus1)
+                                    $('.pag5').html(curPlus1)
+                                }
+
+                                else if(curPage == numPages - 2){
+                                    $('.pag1').attr('id',curMinus2)
+                                    $('.pag1').html(curMinus2)
+                                    $('.pag2').attr('id',curMinus1)
+                                    $('.pag2').html(curMinus1)
+                                    $('.pag3').attr('id',curPage)
+                                    $('.pag3').html(curPage)
+                                    $('.pag4').attr('id',curPlus1)
+                                    $('.pag4').html(curPlus1)
+                                    $('.pag5').attr('id',curPlus2)
+                                    $('.pag5').html(curPlus2)
+                                }
+                            }
+                        }
+
+                        if(curPage >= 3 && curPage < numPages - 2){
+                            $('.pag1').attr('id',curMinus2)
+                            $('.pag1').html(curMinus2)
+                            $('.pag2').attr('id',curMinus1)
+                            $('.pag2').html(curMinus1)
+                            $('.pag3').attr('id',curPage)
+                            $('.pag3').html(curPage)
+                            $('.pag4').attr('id',curPlus1)
+                            $('.pag4').html(curPlus1)
+                            $('.pag5').attr('id',curPlus2)
+                            $('.pag5').html(curPlus2)
+                            console.log('curPage pageBTN', curPage)
+                        }
+                    }
+                    //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
+                    else {
+                        console.log('999999999999999999999999999999999999999999999999999999999')
+                        for(var i = 0; i <= numPages; i++){
+                            let num = i + 1
+                            $('.pag' + (numPages - i)).attr('id',num)
+                            $('.pag' + (numPages - i)).html(num)
+                        }
+                    }
+
+
+
+
+
+
+
+
                 }
             },
             "json");
@@ -183,9 +321,10 @@
 
 
 
+    
 
 
-        //arrowlink
+        //AJAX Handler for Arrow Buttons
         $(document).on('click', '.arrLink', function(){
             var id = $(this).attr('id');
             var maxPages = $('#maxPages').attr('value');
@@ -194,6 +333,8 @@
                 method:"GET",
 
                 success:function(response){
+                    
+
                     // add new instance to table
                     $('#table').html(response)
                     if(id >= maxPages){
@@ -218,6 +359,132 @@
 
                     }
                     $('#currentPage').attr('value', id)
+
+
+
+
+                    var curPage = $('#currentPage').attr('value');
+                    var numPages = $('#maxPages').attr('value');
+                    var curPlus1 = parseInt(curPage) + 1
+                    var curPlus2 = parseInt(curPage) + 2
+                    var curPlus3 = parseInt(curPage) + 3
+                    var curPlus4 = parseInt(curPage) + 4
+                    var curMinus4 = parseInt(curPage) - 4
+                    var curMinus3 = parseInt(curPage) - 3
+                    var curMinus2 = parseInt(curPage) - 2
+                    var curMinus1 = parseInt(curPage) - 1
+                    console.log('curMinus4:', curMinus4)
+                    console.log('curMinus3:', curMinus3)
+                    console.log('curMinus2:', curMinus2)
+                    console.log('curMinus1:', curMinus1)
+                    console.log('curPage:', curPage)
+                    console.log('CurPlus1:', curPlus1)
+                    console.log('curPlus2:', curPlus2)
+                    console.log('curPlus3:', curPlus3)
+                    console.log('curPlus4:', curPlus4)
+
+                    if(numPages >= 5){
+                        if(curPage < 3){
+                            console.log('curPage pageBTN 11', curPage)
+                            
+
+
+                            if(curPage == 2){
+                                $('.pag1').attr('id',curMinus1)
+                                $('.pag1').html(curMinus1)
+                                $('.pag2').attr('id',curPage)
+                                $('.pag2').html(curPage)
+                                $('.pag3').attr('id',curPlus1)
+                                $('.pag3').html(curPlus1)
+                                $('.pag4').attr('id',curPlus2)
+                                $('.pag4').html(curPlus2)
+                                $('.pag5').attr('id',curPlus3)
+                                $('.pag5').html(curPlus3)
+                            }
+                            else{
+                                $('.pag1').attr('id',curPage)
+                                $('.pag1').html(curPage)
+                                $('.pag2').attr('id',curPlus1)
+                                $('.pag2').html(curPlus1)
+                                $('.pag3').attr('id',curPlus2)
+                                $('.pag3').html(curPlus2)
+                                $('.pag4').attr('id',curPlus3)
+                                $('.pag4').html(curPlus3)
+                                $('.pag5').attr('id',curPlus4)
+                                $('.pag5').html(curPlus4)
+                            }
+                        }
+                        
+                        if(curPage >= numPages - 2){
+                            if(curPage == numPages){
+                                $('.pag1').attr('id',curMinus4)
+                                $('.pag1').html(curMinus4)
+                                $('.pag2').attr('id',curMinus3)
+                                $('.pag2').html(curMinus3)
+                                $('.pag3').attr('id',curMinus2)
+                                $('.pag3').html(curMinus2)
+                                $('.pag4').attr('id',curMinus1)
+                                $('.pag4').html(curMinus1)
+                                $('.pag5').attr('id',curPage)
+                                $('.pag5').html(curPage)
+                                console.log('pag3 pageBTN', curMinus2)
+                            }
+                            else {
+                                if(curPage == numPages - 1){
+                                    $('.pag1').attr('id',curMinus3)
+                                    $('.pag1').html(curMinus3)
+                                    $('.pag2').attr('id',curMinus2)
+                                    $('.pag2').html(curMinus2)
+                                    $('.pag3').attr('id',curMinus1)
+                                    $('.pag3').html(curMinus1)
+                                    $('.pag4').attr('id',curPage)
+                                    $('.pag4').html(curPage)
+                                    $('.pag5').attr('id',curPlus1)
+                                    $('.pag5').html(curPlus1)
+                                }
+                                
+                                else if(curPage == numPages - 2){
+                                    $('.pag1').attr('id',curMinus2)
+                                    $('.pag1').html(curMinus2)
+                                    $('.pag2').attr('id',curMinus1)
+                                    $('.pag2').html(curMinus1)
+                                    $('.pag3').attr('id',curPage)
+                                    $('.pag3').html(curPage)
+                                    $('.pag4').attr('id',curPlus1)
+                                    $('.pag4').html(curPlus1)
+                                    $('.pag5').attr('id',curPlus2)
+                                    $('.pag5').html(curPlus2)
+                                }
+                            }
+                        }
+
+                        if(curPage >= 3 && curPage < numPages - 2){
+                            $('.pag1').attr('id',curMinus2)
+                            $('.pag1').html(curMinus2)
+                            $('.pag2').attr('id',curMinus1)
+                            $('.pag2').html(curMinus1)
+                            $('.pag3').attr('id',curPage)
+                            $('.pag3').html(curPage)
+                            $('.pag4').attr('id',curPlus1)
+                            $('.pag4').html(curPlus1)
+                            $('.pag5').attr('id',curPlus2)
+                            $('.pag5').html(curPlus2)
+                            console.log('curPage pageBTN', curPage)
+                        }
+                    }
+                    //Less than 5 pages, unsure if '#pag' + (numPages - i) will work
+                    else {
+                        console.log('999999999999999999999999999999999999999999999999999999999')
+                        for(var i = 0; i <= numPages; i++){
+                            let num = i + 1
+                            $('.pag' + (numPages - i)).attr('id',num)
+                            $('.pag' + (numPages - i)).html(num)
+                        }
+                    }
+
+
+
+
                 }
             },
             "json");

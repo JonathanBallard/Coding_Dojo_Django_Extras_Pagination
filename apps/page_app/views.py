@@ -46,7 +46,7 @@ def index(request, page):
     else:
         minPage = page - 2
 
-    if page >= numPages -2:
+    if page >= numPages - 2:
         maxPage = numPages
     else:
         maxPage = page + 2
@@ -60,7 +60,7 @@ def index(request, page):
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
-        'rangeOfPages' : range(minPage,maxPage),
+        'rangeOfPages' : range(minPage,maxPage+1),
         'maxPages' : maxPages,
         'currentPage' : currentPage,
         'firstPage' : firstPage,
@@ -144,7 +144,7 @@ def pagination(request, page):
     else:
         minPage = page - 2
 
-    if page >= numPages -2:
+    if page >= numPages - 2:
         maxPage = numPages
     else:
         maxPage = page + 2
@@ -157,7 +157,7 @@ def pagination(request, page):
         'all_leads' : allLeads,
         'renderTable' : renderTable,
         'numPages' : range(1,numPages),
-        'rangeOfPages' : range(minPage,maxPage),
+        'rangeOfPages' : range(minPage,maxPage+1),
         'maxPages' : maxPages,
         'currentPage' : currentPage,
         'firstPage' : firstPage,
